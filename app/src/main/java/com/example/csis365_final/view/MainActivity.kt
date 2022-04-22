@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.csis365_final.R
+import com.example.csis365_final.dto.BookReturn
 import com.example.csis365_final.service.TheOneService
+import com.google.gson.JsonElement
+import okhttp3.ResponseBody
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var textMain : TextView
-    lateinit var characters : List<String>
+    lateinit var bookReturn: BookReturn
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,13 +20,25 @@ class MainActivity : AppCompatActivity() {
 
         val service = TheOneService()
 
+        /**
         service.getCharacters(
-            successCallback = { categories ->
-                textMain.setText(categories.toString())
+            successCallback = { characters ->
+                textMain.setText(characters.string())
             },
 
             failureCallback = { errorMessage ->
-                textMain.setText(errorMessage)
+                textMain.setText(errorMessage.toString())
+            }
+        )
+        **/
+
+        service.getBooks(
+            successCallback = { books ->
+                bookReturn = books
+            },
+
+            failureCallback = { errorMessage ->
+                textMain.setText(errorMessage.toString())
             }
         )
     }
