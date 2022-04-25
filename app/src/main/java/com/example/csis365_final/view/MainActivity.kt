@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.TextView
 import com.example.csis365_final.R
 import com.example.csis365_final.dto.BookReturn
+import com.example.csis365_final.dto.Characters
 import com.example.csis365_final.service.TheOneService
 import com.google.gson.JsonElement
 import okhttp3.ResponseBody
@@ -12,6 +13,7 @@ import okhttp3.ResponseBody
 class MainActivity : AppCompatActivity() {
     lateinit var textMain : TextView
     lateinit var bookReturn: BookReturn
+    lateinit var charactersRet: Characters
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,17 +22,17 @@ class MainActivity : AppCompatActivity() {
 
         val service = TheOneService()
 
-        /**
+
         service.getCharacters(
             successCallback = { characters ->
-                textMain.setText(characters.string())
+                charactersRet = characters
             },
 
             failureCallback = { errorMessage ->
                 textMain.setText(errorMessage.toString())
             }
         )
-        **/
+
 
         service.getBooks(
             successCallback = { books ->

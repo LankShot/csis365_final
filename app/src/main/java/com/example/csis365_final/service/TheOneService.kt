@@ -1,6 +1,7 @@
 package com.example.csis365_final.service
 
 import com.example.csis365_final.dto.BookReturn
+import com.example.csis365_final.dto.Characters
 import com.example.csis365_final.network.RetrofitFactory
 import com.google.gson.JsonElement
 import okhttp3.ResponseBody
@@ -14,12 +15,12 @@ class TheOneService {
     val api = RetrofitFactory().getTheOneApi()
 
     fun getCharacters(
-        successCallback: (ResponseBody) -> Unit,
+        successCallback: (Characters) -> Unit,
         failureCallback: (errorMessage: String) -> Unit
     ) {
-        api.getCharacters().enqueue(object : Callback<ResponseBody> {
+        api.getCharacters().enqueue(object : Callback<Characters> {
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+            override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         successCallback(it)
@@ -31,10 +32,11 @@ class TheOneService {
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            override fun onFailure(call: Call<Characters>, t: Throwable) {
                 failureCallback("Error: ${t.message}")
             }
         })
+
     }
 
     fun getBooks(

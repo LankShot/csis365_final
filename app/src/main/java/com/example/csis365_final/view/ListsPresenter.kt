@@ -1,9 +1,6 @@
 package com.example.csis365_final.view
 
-import android.app.Application
-import android.content.Context
 import android.content.SharedPreferences
-import com.example.csis365_final.dto.Book
 import com.example.csis365_final.service.TheOneService
 
 
@@ -26,6 +23,19 @@ class ListsPresenter(
 
             successCallback = { books ->
                 view.bindBookReturn(books)
+            },
+
+            failureCallback = { errorMessage ->
+                view.showError(errorMessage)
+            }
+        )
+    }
+
+    fun getCharacters() {
+        theOneService.getCharacters(
+
+            successCallback = { characters ->
+                view.bindCharacters(characters)
             },
 
             failureCallback = { errorMessage ->
