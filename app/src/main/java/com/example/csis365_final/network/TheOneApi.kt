@@ -2,6 +2,7 @@ package com.example.csis365_final.network
 
 import com.example.csis365_final.dto.BookReturn
 import com.example.csis365_final.dto.Characters
+import com.example.csis365_final.dto.Quotes
 import com.google.gson.JsonElement
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -19,5 +20,9 @@ interface TheOneApi {
     @GET("/v2/book")
     @Headers("Authorization: Bearer hUXOxvlTiaM-67Cjjrk7")
     fun getBooks(): Call<BookReturn>
+
+    @GET("/v2/quote")
+    @Headers("Authorization: Bearer hUXOxvlTiaM-67Cjjrk7")
+    fun getQuotes(): Call<Quotes>
 
 }

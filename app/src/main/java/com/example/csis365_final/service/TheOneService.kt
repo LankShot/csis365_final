@@ -2,6 +2,7 @@ package com.example.csis365_final.service
 
 import com.example.csis365_final.dto.BookReturn
 import com.example.csis365_final.dto.Characters
+import com.example.csis365_final.dto.Quotes
 import com.example.csis365_final.network.RetrofitFactory
 import com.google.gson.JsonElement
 import okhttp3.ResponseBody
@@ -58,6 +59,31 @@ class TheOneService {
             }
 
             override fun onFailure(call: Call<BookReturn>, t: Throwable) {
+                failureCallback("Error: ${t.message}")
+            }
+        })
+
+    }
+
+    fun getQuotes(
+        successCallback: (Quotes) -> Unit,
+        failureCallback: (errorMessage: String) -> Unit
+    ) {
+        api.getQuotes().enqueue(object : Callback<Quotes> {
+
+            override fun onResponse(call: Call<Quotes>, response: Response<Quotes>) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        successCallback(it)
+                    } ?: run {
+                        failureCallback("No jokes returned from service")
+                    }
+                } else {
+                    failureCallback("Error getting jokes")
+                }
+            }
+
+            override fun onFailure(call: Call<Quotes>, t: Throwable) {
                 failureCallback("Error: ${t.message}")
             }
         })
