@@ -9,8 +9,8 @@ class BooksPresenterFactory {
         fun createPresenter(view: BooksView, context: Context): BooksPresenter {
             return BooksPresenter(
                 view,
-                TheOneService(),
-                context.getSharedPreferences("key", Context.MODE_PRIVATE))
+                TheOneService()
+            )
         }
     }
 }

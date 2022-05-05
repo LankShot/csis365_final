@@ -9,8 +9,7 @@ class QuotesPresenterFactory {
         fun createPresenter(view: QuotesView, context: Context): QuotesPresenter {
             return QuotesPresenter(
                 view,
-                TheOneService(),
-                context.getSharedPreferences("key", Context.MODE_PRIVATE))
+                TheOneService())
         }
     }
 }
