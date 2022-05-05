@@ -26,7 +26,7 @@ class TheOneService {
                     response.body()?.let {
                         successCallback(it)
                     } ?: run {
-                        failureCallback("No jokes returned from service")
+                        failureCallback("No Characters returned from service")
                     }
                 } else {
                     failureCallback("Error getting jokes")
@@ -51,7 +51,7 @@ class TheOneService {
                     response.body()?.let {
                         successCallback(it)
                     } ?: run {
-                        failureCallback("No jokes returned from service")
+                        failureCallback("No Books returned from service")
                     }
                 } else {
                     failureCallback("Error getting jokes")
@@ -76,7 +76,7 @@ class TheOneService {
                     response.body()?.let {
                         successCallback(it)
                     } ?: run {
-                        failureCallback("No jokes returned from service")
+                        failureCallback("No quotes returned from service")
                     }
                 } else {
                     failureCallback("Error getting jokes")
