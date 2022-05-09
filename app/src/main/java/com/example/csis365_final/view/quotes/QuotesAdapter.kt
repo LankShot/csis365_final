@@ -11,7 +11,7 @@ import com.example.csis365_final.dto.Quote
 class QuotesAdapter(private val quotes: List<Quote>) : RecyclerView.Adapter<QuotesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.fragment_quotes, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.text_view, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

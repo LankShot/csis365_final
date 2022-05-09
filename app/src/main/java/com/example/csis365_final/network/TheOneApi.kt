@@ -13,7 +13,7 @@ import retrofit2.http.Query
 
 interface TheOneApi {
 
-    @GET("/v2/character")
+    @GET("/v2/character?limit=50")
     @Headers("Authorization: Bearer hUXOxvlTiaM-67Cjjrk7")
     fun getCharacters(): Call<Characters>
 

@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/large_margin"
-        android:textSize="@dimen/large_margin"
-        tools:text="Animal" />
+        android:textSize="20sp"
+        tools:text="default" />
 
     <View
         android:layout_width="match_parent"

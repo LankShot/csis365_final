@@ -11,7 +11,7 @@ import com.example.csis365_final.dto.Book
 class BooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<BooksAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.fragment_books, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.text_view, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

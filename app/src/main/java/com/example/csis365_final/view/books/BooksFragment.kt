@@ -24,19 +24,11 @@ class BooksFragment : Fragment(), BooksView {
     companion object {
         @JvmStatic
         fun newInstance() = BooksFragment().apply {
-            arguments = Bundle().apply {
-                // If you have any arguments to pass into the fragment, you may do so in here like this:
-//                putString(ARG_PARAM1, param1)
-            }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            // if you have any arguments, pull them out here
-//            param1 = it.getString(ARG_PARAM1)
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

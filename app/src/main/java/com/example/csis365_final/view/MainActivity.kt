@@ -15,49 +15,29 @@ import com.example.csis365_final.view.quotes.QuotesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var textMain : TextView
     lateinit var fragmentContainer: FrameLayout
     lateinit var bottomBar: BottomNavigationView
 
-    lateinit var btnBooks : Button
-    lateinit var btnCharacters: Button
-    lateinit var btnQuotes : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textMain = findViewById(R.id.text_main)
-        val service = TheOneService()
+        bindViews()
+        setupNavBar()
 
-        btnBooks = findViewById(R.id.btn_books)
-        btnCharacters = findViewById(R.id.btn_characters)
-        btnQuotes = findViewById(R.id.btn_quotes)
+    }
 
-        btnBooks.setOnClickListener {
-            val fragment = BooksFragment.newInstance()
-            openFragment(fragment)
-        }
-
-        btnCharacters.setOnClickListener {
-            val fragment = CharactersFragment.newInstance()
-            openFragment(fragment)
-        }
-
-        btnQuotes.setOnClickListener {
-            val fragment = QuotesFragment.newInstance()
-            openFragment(fragment)
-        }
-
-
-
+    private fun bindViews() {
+        fragmentContainer = findViewById(R.id.frame_container)
+        bottomBar = findViewById(R.id.bottom_nav_view)
     }
 
     private fun setupNavBar() {
         bottomBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                // This first case will prevent us from opening a page if it's already selected
                 bottomBar.selectedItemId -> true
 
+                R.id.action_main -> openMainPage()
                 R.id.action_books -> openBooksPage()
                 R.id.action_characters -> openCharactersPage()
                 R.id.action_quotes -> openQuotesPage()

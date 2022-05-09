@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.csis365_final.R
 import com.example.csis365_final.dto.Characters
 
-class CharactersAdapter(private val characters: List<com.example.csis365_final.dto.Character>) : RecyclerView.Adapter<CharactersAdapter.ViewHolder>() {
+class CharactersAdapter(
+    private val characters: List<com.example.csis365_final.dto.Character>
+    ) : RecyclerView.Adapter<CharactersAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.fragment_characters, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.text_view, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

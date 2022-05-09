@@ -1,4 +1,4 @@
-package com.example.csis365_final.view
+package com.example.csis365_final.view.characters
 
 import android.annotation.SuppressLint
 import android.content.Context
