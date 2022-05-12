@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:background="@color/a_background"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_chatacters"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_header" />
+            android:textSize="40sp"
+            android:id="@+id/text_main"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/separator"
             android:layout_marginBottom="@dimen/small_padding"
-            android:background="@color/small_separator" />
+            android:background="@color/purple_700" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_characters"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingTop="1sp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
-</FrameLayout>
+</LinearLayout>

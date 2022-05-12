@@ -3,4 +3,7 @@
     <string name="main_books">Books</string>
     <string name="main_chatacters">Characters</string>
     <string name="main_quotes">Quotes</string>
+    <string name="book3">book3</string>
+    <string name="book2">book2</string>
+    <string name="book1">book1</string>
 </resources>

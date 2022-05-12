@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.TypedValue
 import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.*
@@ -17,61 +18,74 @@ import com.example.csis365_final.R
 
 class CharacterActivity : AppCompatActivity() {
 
-    private var GFG_URI = "https://www.geeksforgeeks.org"
-    private var package_name = "com.android.chrome";
+    lateinit var GFG_URI : String
+    private var package_name = "com.android.chrome"
 
-    val button = findViewById<Button>(R.id.character_button)
+    lateinit var button :Button
+    lateinit var characterName: TextView
+    lateinit var characterHeight: TextView
+    lateinit var characterRace: TextView
+    lateinit var characterGender: TextView
+    lateinit var characterBirth: TextView
+    lateinit var characterSpouse: TextView
+    lateinit var characterDeath: TextView
+    lateinit var characterRealm: TextView
+    lateinit var characterHair: TextView
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character)
+        bindViews()
+        setTexts()
+
+        val bundle = intent.extras?.getBundle("bundle")
+        GFG_URI = bundle?.getString("wikiUrl").toString()
 
         button.setOnClickListener {
 
             val builder = CustomTabsIntent.Builder()
 
-            // to set the toolbar color use CustomTabColorSchemeParams
-            // since CustomTabsIntent.Builder().setToolBarColor() is deprecated
-
             val params = CustomTabColorSchemeParams.Builder()
             params.setToolbarColor(R.color.purple_500)
             builder.setDefaultColorSchemeParams(params.build())
 
-            // shows the title of web-page in toolbar
             builder.setShowTitle(true)
 
-            // setShareState(CustomTabsIntent.SHARE_STATE_ON) will add a menu to share the web-page
             builder.setShareState(CustomTabsIntent.SHARE_STATE_ON)
 
-            // To modify the close button, use
-            // builder.setCloseButtonIcon(bitmap)
-
-            // to set weather instant apps is enabled for the custom tab or not, use
             builder.setInstantAppsEnabled(true)
 
-            //  To use animations use -
-            //  builder.setStartAnimations(this, android.R.anim.start_in_anim, android.R.anim.start_out_anim)
-            //  builder.setExitAnimations(this, android.R.anim.exit_in_anim, android.R.anim.exit_out_anim)
             val customBuilder = builder.build()
 
-            if (this.isPackageInstalled(package_name)) {
-                // if chrome is available use chrome custom tabs
-                customBuilder.intent.setPackage(package_name)
-                customBuilder.launchUrl(this, Uri.parse(GFG_URI))
-            } else {
-                // if not available use WebView to launch the url
-            }
+            customBuilder.intent.setPackage(package_name)
+            customBuilder.launchUrl(this, Uri.parse(GFG_URI))
         }
     }
-}
 
-fun Context.isPackageInstalled(packageName: String): Boolean {
-    // check if chrome is installed or not
-    return try {
-        packageManager.getPackageInfo(packageName, 0)
-        true
-    } catch (e: PackageManager.NameNotFoundException) {
-        false
+    fun bindViews(){
+        button = findViewById(R.id.character_button)
+        characterBirth = findViewById(R.id.character_birth)
+        characterDeath = findViewById(R.id.character_death)
+        characterGender = findViewById(R.id.character_gender)
+        characterHair = findViewById(R.id.character_hair)
+        characterHeight = findViewById(R.id.character_height)
+        characterName = findViewById(R.id.character_name)
+        characterRace = findViewById(R.id.character_race)
+        characterRealm = findViewById(R.id.character_realm)
+        characterSpouse = findViewById(R.id.character_spouse)
+    }
+
+    fun setTexts(){
+        val bundle = intent.extras?.getBundle("bundle")
+        characterSpouse.text = bundle?.getString("spouse")
+        characterRealm.text = bundle?.getString("realm")
+        characterRace.text = bundle?.getString("race")
+        characterName.text = bundle?.getString("name")
+        characterHeight.text = bundle?.getString("height")
+        characterHair.text = bundle?.getString("hair")
+        characterGender.text = bundle?.getString("gender")
+        characterDeath.text = bundle?.getString("death")
+        characterBirth.text = bundle?.getString("birth")
     }
 }

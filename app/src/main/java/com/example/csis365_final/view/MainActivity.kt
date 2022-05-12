@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openMainPage() {
         val fragment = MainFragment.newInstance()
+
         openFragment(fragment)
     }
 

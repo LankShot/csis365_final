@@ -8,10 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="small_separator">#440905</color>
-    <color name="small_separator_alt">@color/teal_700</color>
+    <color name="small_separator_alt">#5A4A77</color>
     <color name="large_separator">#520061</color>
 
-    <color name="a_background">#abcdef</color>
+    <color name="a_background">#D4D7DA</color>
     <color name="b_background">#cdefab</color>
     <color name="c_background">#fecdab</color>
     <color name="nav_bar_background">#aaaaaa</color>
