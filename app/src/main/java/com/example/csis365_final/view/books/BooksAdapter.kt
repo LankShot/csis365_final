@@ -24,7 +24,8 @@ class BooksAdapter(private val books: List<Book>) : RecyclerView.Adapter<BooksAd
             view as TextView
             val context = holder.itemView.context
             var bundle = bundleOf(
-                "id" to books[position].id
+                "id" to books[position].id,
+                "name" to books[position].name
             )
             val intent = Intent(context, BookActivity::class.java).apply{
                 putExtra("bundle", bundle)

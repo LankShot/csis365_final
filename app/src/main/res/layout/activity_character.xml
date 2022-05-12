@@ -78,5 +78,12 @@
         android:padding="15dp"
         android:text="See Wiki Page"
         android:textColor="#0F9D58"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/character_back"
+        android:textSize="15dp"/>`
+
 
 </LinearLayout>

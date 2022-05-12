@@ -22,6 +22,8 @@ class CharacterActivity : AppCompatActivity() {
     private var package_name = "com.android.chrome"
 
     lateinit var button :Button
+    lateinit var btnBack : Button
+
     lateinit var characterName: TextView
     lateinit var characterHeight: TextView
     lateinit var characterRace: TextView
@@ -61,10 +63,14 @@ class CharacterActivity : AppCompatActivity() {
             customBuilder.intent.setPackage(package_name)
             customBuilder.launchUrl(this, Uri.parse(GFG_URI))
         }
+
+        btnBack.setOnClickListener { finish() }
     }
 
     fun bindViews(){
         button = findViewById(R.id.character_button)
+        btnBack = findViewById(R.id.character_back)
+
         characterBirth = findViewById(R.id.character_birth)
         characterDeath = findViewById(R.id.character_death)
         characterGender = findViewById(R.id.character_gender)
